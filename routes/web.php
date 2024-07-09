@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\testingController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,6 @@ Route::get('/', function () {
 Route::get('/hello', function () {
     return 'hello world';
 });
-Route::get('testing', [testingController::class,'testing'])->middleware('token');
+Route::get('/testing', [testingController::class,'testing'])->middleware('token');
+
+Route::post('/biodata', [BiodataController::class, 'create'])->middleware('token');

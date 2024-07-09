@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BiodataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/biodata', [BiodataController::class, 'get'])->middleware('token');
+Route::post('/biodata', [BiodataController::class, 'create'])->middleware('token');
+Route::put('/biodata', [BiodataController::class, 'update'])->middleware('token');
